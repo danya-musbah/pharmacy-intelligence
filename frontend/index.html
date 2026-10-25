@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>منصة ذكاء الصيدليات | Pharmacy Intelligence</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="css/style.css" />
+<link rel="stylesheet" href="css/components.css" />
+<link rel="stylesheet" href="css/responsive.css" />
+</head>
+<body>
+
+<!-- ======================= Landing / intro screen ======================= -->
+<div id="landing">
+  <div class="landing-hero">
+    <span class="demo-banner">DEMO DATA &middot; بيانات اصطناعية</span>
+    <h1>منصة ذكاء الصيدليات</h1>
+    <p class="lead">افهم صيدليتك من خلال بياناتها. تحليلات المبيعات والمخزون والربحية والصلاحية والتوقعات في لوحة واحدة.</p>
+    <p class="muted tiny">هذه النسخة التجريبية تستخدم بيانات اصطناعية بالكامل لأغراض العرض فقط. لا تمثل هذه البيانات صيدلية حقيقية ولا تحتوي على بيانات عملاء حقيقيين.</p>
+  </div>
+
+  <div class="container" style="max-width:900px;margin-bottom:20px;">
+    <h2 style="text-align:center;margin-bottom:24px;">كيف تريد تجربة النظام؟</h2>
+  </div>
+  <div class="option-grid">
+    <div class="option-card featured">
+      <h3>تجربة البيانات التجريبية</h3>
+      <p>استكشف المنصة باستخدام بيانات صيدلية اصطناعية واقعية، تغطي 6 أشهر من المبيعات والمخزون والمشتريات.</p>
+      <button class="btn btn-primary btn-block" id="btn-start-demo">ابدأ التجربة</button>
+    </div>
+    <div class="option-card">
+      <h3>تحليل بيانات صيدليتي</h3>
+      <p>ارفع ملفات CSV أو Excel من منظومة الصيدلية وسنقوم بتهيئتها وتحليلها. لا تحتاج إلى تغيير منظومتك الحالية.</p>
+      <button class="btn btn-block" id="btn-upload-data">رفع البيانات</button>
+    </div>
+    <div class="option-card">
+      <h3>ربط منظومة الصيدلية</h3>
+      <p>إذا كانت منظومة الصيدلية تدعم التصدير أو التكامل، يمكن إعداد طريقة مزامنة مناسبة.</p>
+      <button class="btn btn-block" id="btn-explore-integration">استكشف طرق الربط</button>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= Demo data preview screen ======================= -->
+<div id="demo-preview-screen" class="hidden"></div>
+
+<!-- ======================= Main application shell ======================= -->
+<div id="app-shell" class="hidden">
+  <div class="sidebar-scrim" id="sidebar-scrim"></div>
+  <aside class="sidebar" id="sidebar"></aside>
+  <div id="main-col">
+    <div class="topbar">
+      <div style="display:flex;align-items:center;gap:12px;">
+        <button class="menu-toggle" id="menu-toggle" aria-label="القائمة">≡</button>
+        <span class="topbar-title" id="topbar-title">الرئيسية</span>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <span class="badge badge-demo">نسخة تجريبية</span>
+        <button class="btn" id="btn-back-to-demo">العودة إلى بيانات التجربة</button>
+      </div>
+    </div>
+    <div id="view-root"></div>
+  </div>
+  <nav class="bottom-nav" id="bottom-nav"></nav>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.4/chart.umd.min.js"></script>
+<script src="js/api.js"></script>
+<script src="js/charts.js"></script>
+<script src="js/data-import.js"></script>
+<script src="js/app.js"></script>
+<script>
+  initLanding();
+</script>
+</body>
+</html>
