@@ -61,5 +61,20 @@ def detect_mapping(columns, table_type):
 
 def apply_mapping(df, mapping):
     """mapping: {raw_column: standard_field}. Drops unmapped columns, renames the rest."""
-    keep = {raw: std for raw, std in mapping.items() if std and raw in df.columns}
+    if df is None:
+        return df
+
+    keep = {}
+    seen_std_fields = set()
+    for raw, std in mapping.items():
+        if not std or raw not in df.columns:
+            continue
+        if std in seen_std_fields:
+            continue
+        keep[raw] = std
+        seen_std_fields.add(std)
+
+    if not keep:
+        return df.copy()
+
     return df[list(keep.keys())].rename(columns=keep)

@@ -27,6 +27,8 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 FRONTEND_DIR = os.path.join(ROOT, "frontend")
 
 app = Flask(__name__, static_folder=FRONTEND_DIR, static_url_path="")
+app.config["JSON_AS_ASCII"] = False
+app.config["JSON_SORT_KEYS"] = False
 app.json.ensure_ascii = False
 CORS(app)
 app.register_blueprint(api)
@@ -50,5 +52,6 @@ def static_proxy(path):
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
+    debug = os.environ.get("FLASK_DEBUG", "0").lower() in {"1", "true", "yes", "on"}
     print(f"Pharmacy Intelligence backend running: http://localhost:{port}")
-    app.run(host="0.0.0.0", port=port, debug=True)
+    app.run(host="0.0.0.0", port=port, debug=debug, use_reloader=debug)
